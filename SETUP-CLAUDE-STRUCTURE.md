@@ -1,6 +1,6 @@
 # SETUP-CLAUDE-STRUCTURE.md
 
-**Developed by [Abdo Samy](https://abdosamy.com) · [abdosamy.com](https://abdosamy.com)** · v3.1 · 2026-10-12
+**Developed by [Abdo Samy](https://abdosamy.com) · [abdosamy.com](https://abdosamy.com)** · v3.2 · 2026-10-12
 
 📦 Latest version, changelog and feedback: **[github.com/a-samy-consultancy/claude-code-setup-kit](https://github.com/a-samy-consultancy/claude-code-setup-kit)**
 
@@ -914,6 +914,7 @@ dir=""
 re_cq='git[[:space:]]+-C[[:space:]]+"([^"]+)"'; re_c='git[[:space:]]+-C[[:space:]]+([^[:space:]]+)'
 re_dq='^cd[[:space:]]+"([^"]+)"'; re_d='^cd[[:space:]]+([^[:space:];&]+)'
 if [[ $cmd =~ $re_cq ]] || [[ $cmd =~ $re_c ]] || [[ $cmd =~ $re_dq ]] || [[ $cmd =~ $re_d ]]; then dir=${BASH_REMATCH[1]}; fi
+dir=${dir/#\~/$HOME}  # expand a leading ~ (the shell would; the regex doesn't)
 case "$dir" in "") dir="$cwd" ;; /*) ;; *) dir="$cwd/$dir" ;; esac
 
 repo=$(git -C "$dir" rev-parse --show-toplevel 2>/dev/null) || block "not inside a git repo ($dir). Run the push from the repo folder."
@@ -1301,6 +1302,7 @@ dir=""
 re_cq='git[[:space:]]+-C[[:space:]]+"([^"]+)"'; re_c='git[[:space:]]+-C[[:space:]]+([^[:space:]]+)'
 re_dq='^cd[[:space:]]+"([^"]+)"'; re_d='^cd[[:space:]]+([^[:space:];&]+)'
 if [[ $cmd =~ $re_cq ]] || [[ $cmd =~ $re_c ]] || [[ $cmd =~ $re_dq ]] || [[ $cmd =~ $re_d ]]; then dir=${BASH_REMATCH[1]}; fi
+dir=${dir/#\~/$HOME}  # expand a leading ~ (the shell would; the regex doesn't)
 case "$dir" in "") dir="$cwd" ;; /*) ;; *) dir="$cwd/$dir" ;; esac
 
 repo=$(git -C "$dir" rev-parse --show-toplevel 2>/dev/null) || block "not inside a git repo ($dir). Run the push from the repo folder."
@@ -1449,6 +1451,6 @@ description: Refresh the personal Claude Code config backup from ~/.claude. Use 
 
 ---
 
-*Claude Code Setup Kit v3.1, developed by [Abdo Samy](https://abdosamy.com) · [abdosamy.com](https://abdosamy.com) · [LinkedIn](https://www.linkedin.com/in/abdallahsamy)*
+*Claude Code Setup Kit v3.2, developed by [Abdo Samy](https://abdosamy.com) · [abdosamy.com](https://abdosamy.com) · [LinkedIn](https://www.linkedin.com/in/abdallahsamy)*
 *Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): free to use and adapt; if you share or adapt this file, credit Abdo Samy and link back.*
 *Feedback: [open an issue](https://github.com/a-samy-consultancy/claude-code-setup-kit/issues/new/choose).*
