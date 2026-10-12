@@ -13,5 +13,8 @@ description: Release a new version of the Claude Code Setup Kit (SETUP-CLAUDE-ST
 6. Run `npm run check`. It must be 🟢.
 7. After the maintainer's "yes": commit (no Claude co-author trailer), tag `vX.Y`, then push. Push and commit in **separate** commands, with a plain commit message (no ` + `), so the push guard only sees the push.
 8. Write the release notes to a scratch file: the new version's `CHANGELOG.md` section (`awk '/^## vX.Y/{f=1;next} /^## v/{f=0} f' CHANGELOG.md > notes.md`).
-9. Create the GitHub Release: `gh release create vX.Y --title "vX.Y · <short theme>" --notes-file notes.md --latest`. If the token or the command is blocked in this session, don't work around it: write a small `release.sh` next to the notes files (`set -euo pipefail`, `-R <owner/repo>`, every pending version, older ones with `--latest=false`, a 🟢 line at the end) and give the maintainer **one line to run in their own terminal**: `bash <absolute path>/release.sh`. Check every notes file exists first. Don't give a `!` command for a normal terminal: `!` only works in the Claude prompt.
+9. Create the GitHub Release: `gh release create vX.Y --title "vX.Y · <short theme>" --notes-file notes.md --latest`. If this session can't create it, don't work around the block. Instead:
+   - Check every notes file exists.
+   - Write a small `release.sh` next to them (`set -euo pipefail`, `-R <owner/repo>`, every pending version, older ones with `--latest=false`, a 🟢 line at the end).
+   - Give the maintainer one line to run in their own terminal: `bash <absolute path>/release.sh`.
 10. In the private log: move the items from ⏳ Pending to 📜 History, update 🚦 At a glance (note any Release still waiting on the maintainer), push the private repo.
