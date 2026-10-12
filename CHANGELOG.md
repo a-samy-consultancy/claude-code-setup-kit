@@ -2,6 +2,10 @@
 
 What changed in each version of `SETUP-CLAUDE-STRUCTURE.md`. Newest first. Older versions: see [Releases](../../releases).
 
+## v3.1 · 2026-10-12
+
+- 🚦 **Push guard fix (both guards):** the force-push check now looks only at the `git push …` part of a command. Before, a ` + ` or `-f` anywhere (e.g. "backup + restore" in a commit message) blocked the push by mistake. `+main`, `-f` and `--force` on the push itself are still blocked. Tested with 14 cases.
+
 ## v3.0 · 2026-10-12
 
 Safer by default, plus three optional extras that protect your whole computer, not just one project.

@@ -1,6 +1,6 @@
 # SETUP-CLAUDE-STRUCTURE.md
 
-**Developed by [Abdo Samy](https://abdosamy.com) · [abdosamy.com](https://abdosamy.com)** · v3.0 · 2026-10-12
+**Developed by [Abdo Samy](https://abdosamy.com) · [abdosamy.com](https://abdosamy.com)** · v3.1 · 2026-10-12
 
 📦 Latest version, changelog and feedback: **[github.com/a-samy-consultancy/claude-code-setup-kit](https://github.com/a-samy-consultancy/claude-code-setup-kit)**
 
@@ -918,7 +918,9 @@ case "$dir" in "") dir="$cwd" ;; /*) ;; *) dir="$cwd/$dir" ;; esac
 
 repo=$(git -C "$dir" rev-parse --show-toplevel 2>/dev/null) || block "not inside a git repo ($dir). Run the push from the repo folder."
 
-grep -qE -- '(--force|--force-with-lease|[[:space:]]-f([[:space:]]|$)|[[:space:]]\+)' <<<"$cmd" && block "force push. Ask the owner first."
+# Look only at the push itself (up to the next ; & |), so a "+" or "-f" in a commit message isn't a force push.
+push_part=$(grep -oE 'git([[:space:]]+-C[[:space:]]+("[^"]+"|[^[:space:]]+))?[[:space:]]+push[^;&|]*' <<<"$cmd")
+grep -qE -- '(--force|[[:space:]]-f([[:space:]]|$)|[[:space:]]\+[^[:space:]])' <<<"$push_part" && block "force push. Ask the owner first."
 
 [[ "$EXPECTED_REMOTE" == "{{SET_AT_SETUP}}" || -z "$EXPECTED_REMOTE" ]] && block "EXPECTED_REMOTE isn't set in .claude/hooks/pre-push-guard.sh. Set it to this repo's origin, then push."
 remote=$(git -C "$repo" remote get-url origin 2>/dev/null)
@@ -1306,7 +1308,9 @@ repo=$(git -C "$dir" rev-parse --show-toplevel 2>/dev/null) || block "not inside
 # The repo's own guard runs only when the session was opened in that repo: then skip (no double checks).
 [[ -x "$repo/.claude/hooks/pre-push-guard.sh" && "$(cd "${CLAUDE_PROJECT_DIR:-/nonexistent}" 2>/dev/null && pwd -P)" == "$(cd "$repo" && pwd -P)" ]] && exit 0
 
-grep -qE -- '(--force|--force-with-lease|[[:space:]]-f([[:space:]]|$)|[[:space:]]\+)' <<<"$cmd" && block "force push. Ask the owner first."
+# Look only at the push itself (up to the next ; & |), so a "+" or "-f" in a commit message isn't a force push.
+push_part=$(grep -oE 'git([[:space:]]+-C[[:space:]]+("[^"]+"|[^[:space:]]+))?[[:space:]]+push[^;&|]*' <<<"$cmd")
+grep -qE -- '(--force|[[:space:]]-f([[:space:]]|$)|[[:space:]]\+[^[:space:]])' <<<"$push_part" && block "force push. Ask the owner first."
 
 remote=$(git -C "$repo" remote get-url origin 2>/dev/null)
 ok=""
@@ -1445,6 +1449,6 @@ description: Refresh the personal Claude Code config backup from ~/.claude. Use 
 
 ---
 
-*Claude Code Setup Kit v3.0, developed by [Abdo Samy](https://abdosamy.com) · [abdosamy.com](https://abdosamy.com) · [LinkedIn](https://www.linkedin.com/in/abdallahsamy)*
+*Claude Code Setup Kit v3.1, developed by [Abdo Samy](https://abdosamy.com) · [abdosamy.com](https://abdosamy.com) · [LinkedIn](https://www.linkedin.com/in/abdallahsamy)*
 *Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): free to use and adapt; if you share or adapt this file, credit Abdo Samy and link back.*
 *Feedback: [open an issue](https://github.com/a-samy-consultancy/claude-code-setup-kit/issues/new/choose).*
