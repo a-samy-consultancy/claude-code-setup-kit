@@ -1,0 +1,9 @@
+{
+  "name": "claude-code-setup-kit",
+  "private": true,
+  "description": "Maintainer checks for the Claude Code Setup Kit. Not needed to use the kit.",
+  "scripts": {
+    "check": "node scripts/check-private-terms.mjs",
+    "lint": "npm run check"
+  }
+}
