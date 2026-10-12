@@ -43,6 +43,7 @@ Drop **one file** into your project. Claude interviews you, reads your code, and
 | 🛡️ | **Push guard** | Blocks pushes to the wrong place, force pushes, and pushes with failing checks |
 | 🧪 | **Automatic tests + lint** | A broken change never reaches your users |
 | 🔄 | **`/update-docs`** | One command saves your progress for the next session |
+| 🧰 | **Optional extras** | Leak check for public repos, a safety-net push guard for every project, and a backup of your Claude setup with a tested restore |
 
 ---
 
@@ -80,6 +81,7 @@ Works for **new ideas and existing repos**. Best on **Cloudflare Workers**, and 
 - ✋ **Asks before it acts.** No structural change without your clear "yes".
 - 🚫 **Never pushes without asking.** Pushing may publish your app, so you decide.
 - 🔑 **Never stores secrets.** Key and token names only, never values.
+- 🙈 **Can't read your secret files.** Deny rules block Claude from opening `.env` and `.dev.vars`.
 - 🧱 **Never changes how your app works.** Setup adds structure, docs, checks and tests. Nothing else.
 - 🧪 **Tests can't touch real services.** Secrets are blanked during tests.
 
