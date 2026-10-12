@@ -1,8 +1,28 @@
 # 🧠 Claude Code Setup Kit
 
-**Turn Claude Code into a disciplined build team in 10 minutes.** One file. Any project. No setup skills needed.
+**The best practices of the people who built Claude Code, made simple.**
+Turn Claude Code into a disciplined build team in 10 minutes. One file. Any project. No setup skills needed.
 
 Built by **[Abdo Samy](https://abdosamy.com)** · [LinkedIn](https://www.linkedin.com/in/abdallahsamy) · [License: CC BY 4.0](LICENSE)
+
+---
+
+## 👋 Why I built this
+
+> I'm Abdo. I'm obsessed with learning from the best. I constantly watch how the **Anthropic engineers who built Claude Code** use it themselves, study the best practices they share, and dig into how top engineers set up their projects.
+>
+> Then I test it all on my own live products, keep what works, build on it, and drop the noise.
+>
+> **This kit is the result: the best of all of it, in one bucket.** Simple, clear and ready to use, especially if you're a vibe coder or a business owner, not a developer.
+
+| | Built on | What that means for you |
+|---|---|---|
+| 🏛️ | **Anthropic's official best practices** | Project memory, helper agents, hooks and permissions, set up the way [Anthropic recommends](https://www.anthropic.com/engineering/claude-code-best-practices) |
+| 👩‍💻 | **How Claude Code's own creators work** | Plan before building, verify every change, let Claude check its own work ([docs](https://code.claude.com/docs/en/best-practices)) |
+| 🏗️ | **Proven engineering practice** | Tests, lint, code review, safe deploys, least-access security, a log of every decision |
+| 🧪 | **Battle-tested by me** | Running every day on my own live websites and AI agents |
+
+<sub>Independent project. Not affiliated with or endorsed by Anthropic.</sub>
 
 ---
 
