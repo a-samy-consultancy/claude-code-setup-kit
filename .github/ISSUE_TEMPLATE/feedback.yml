@@ -1,0 +1,36 @@
+name: 💬 Share feedback
+description: Tell Abdo how the setup went, what broke, or what would make it better.
+title: "[Feedback] "
+labels: ["feedback"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of feedback?
+      options:
+        - 🟢 It worked, here's how it went
+        - 🔴 Something broke or was confusing
+        - 💡 Idea or improvement
+    validations:
+      required: true
+  - type: dropdown
+    id: who
+    attributes:
+      label: You are a...
+      options:
+        - Business owner
+        - Vibe coder
+        - IT person
+        - Developer
+  - type: input
+    id: stack
+    attributes:
+      label: Your stack
+      placeholder: e.g. Cloudflare Workers, Vercel + Next.js, Python
+  - type: textarea
+    id: details
+    attributes:
+      label: What happened?
+      description: Never paste keys, tokens or passwords.
+    validations:
+      required: true
